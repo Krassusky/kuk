@@ -11,14 +11,17 @@ const Count = () => {
 
     return (
         <div>
+            <p>Store ID: {storeId}</p>
+            <p>Selected Option: {selectedOption}</p>
             <ProductDropdown/>
             <h1>Count Page</h1>
 
-            <input type="text" />
-            <input type="text" />
+            <input type="text" name='Date' />
+            <input type="text" name='Qtd' />
 
-            <p>Store ID: {storeId}</p>
-            <p>Selected Option: {selectedOption}</p>
+            
+            
+            
             {/* Additional content based on storeId and selectedOption */}
         </div>
     );

@@ -10,6 +10,7 @@ export function RouteApp() {
     <Router basename="/">
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/Home" element={<Home />} />
         <Route path="/options" element={<Options />} />
         <Route path="/options/:storeId" element={<Options />} />
         <Route path="/store-dropdown" element={<StoreDropdown />} />
