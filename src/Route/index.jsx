@@ -1,13 +1,18 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from '../Pages/Home' // Importação da exportação padrão do Home
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from '../Pages/Home'; // Importação da exportação padrão do Home
+import Options from '../Pages/Options';
+import StoreDropdown from '../Components/StoreDropdown';
+
 
 export function RouteApp() {
   return (
-    <BrowserRouter basename="/">
+    <Router basename="/">
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/options" element={<Options />} />
+        <Route path="/options/:storeId" element={<Options />} />
+        <Route path="/store-dropdown" element={<StoreDropdown />} />
       </Routes>
-    </BrowserRouter>
-  )
+    </Router>
+  );
 }
