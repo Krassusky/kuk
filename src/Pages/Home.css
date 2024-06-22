@@ -1,0 +1,15 @@
+.elements{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    margin-right: 1vw;
+    margin-left: 1vw;
+    margin-top: 40%;
+
+}
+
+.Header{
+    font-size: 21px;
+   
+}
