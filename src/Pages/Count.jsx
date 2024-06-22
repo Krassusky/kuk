@@ -1,20 +1,25 @@
+
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import ProductDropdown from '../Components/ProductDropdown';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './Home.css';
-import { useParams } from 'react-router-dom';
 
 const Count = () => {
-    const { storeId } = useParams();
+    const location = useLocation();
+    const queryParams = new URLSearchParams(location.search);
+    const storeId = queryParams.get('storeId');
+    const selectedOption = queryParams.get('selectedOption');
 
     return (
-        <div className="container elements">
-            <h1 className='Header'>Loja {storeId}</h1>
-            <form>
-                <ProductDropdown />
-                {/* Outros campos do formulário */}
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+        <div>
+            <ProductDropdown/>
+            <h1>Count Page</h1>
+
+            <input type="text" />
+            <input type="text" />
+
+            <p>Store ID: {storeId}</p>
+            <p>Selected Option: {selectedOption}</p>
+            {/* Additional content based on storeId and selectedOption */}
         </div>
     );
 };
