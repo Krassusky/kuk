@@ -10,8 +10,7 @@ const Home = () => {
             <form>
                 <StoreDropdown />
                 {/* Outros campos do formulário */}
-                <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
+        </form>
         </div>
     );
 };
