@@ -7,6 +7,11 @@ const Options = () => {
     // Replace this with actual logic to fetch data based on storeId if needed
 
     const handleOptionSelect = (option) => {
+       
+       
+       
+      
+       
         console.log(`${option} selecionada`); // Log to console the selected option
         // Add logic here for further actions based on selected option
     };
