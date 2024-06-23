@@ -1,56 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate para navegação
+import { DataContext } from '../hooks/DataContext'; // Importar o DataContext
 
 const StoreDropdown = () => {
-    const [stores, setStores] = useState([]);
     const [selectedStore, setSelectedStore] = useState('');
-    const navigate = useNavigate(); // useNavigate hook for navigation
+    const navigate = useNavigate(); // useNavigate hook para navegação
 
-    useEffect(() => {
-        const fetchStores = async () => {
-            const spreadsheetId = '1C9bD1O_qwBgdKajrLApYkRcQqHI-qcel8TfvhwXkNuQ'; // Spreadsheet ID
-            const range = 'LojaseEnderecos!A:C'; // Sheet range
-            const apiKey = process.env.REACT_APP_GOOGLE_SHEETS_API_KEY;
+    // Usar contexto para obter as lojas
+    const { stores } = useContext(DataContext);
 
-            const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
-
-            try {
-                console.log('Fetching data from URL:', url); // Logging for debugging
-                const response = await axios.get(url);
-                console.log('Response data:', response.data); // Logging for debugging
-
-                const rows = response.data.values;
-                if (rows.length > 0) {
-                    const headers = rows[0];
-                    const storesData = rows.slice(1).map((row) => {
-                        let store = {};
-                        headers.forEach((header, index) => {
-                            store[header] = row[index];
-                        });
-                        return store;
-                    });
-                    setStores(storesData);
-                }
-            } catch (error) {
-                console.error('Error fetching data from Google Sheets:', error);
-            }
-        };
-
-        fetchStores();
-    }, []);
-
-    // Function to handle store selection and navigate to options page
+    // Função para lidar com a seleção da loja e navegar para a página de opções
     const handleStoreSelection = (selectedStore) => {
         setSelectedStore(selectedStore);
 
-        // Navigate to the options page with route state
+        // Navegar para a página de opções com o ID da loja
         navigate(`/options/${selectedStore.Codigodaloja}`);
     };
 
     return (
         <div className="form-group">
-            <label htmlFor="storeSelect">Loja</label>
+            <label htmlFor="storeSelect"></label>
             <select
                 id="storeSelect"
                 className="form-control"
@@ -58,12 +27,12 @@ const StoreDropdown = () => {
                 onChange={(e) => {
                     const selectedStore = stores.find(store => store.Codigodaloja === e.target.value);
                     handleStoreSelection(selectedStore);
-                }} // Call handleStoreSelection on store selection
+                }} // Chama handleStoreSelection ao selecionar uma loja
             >
-                <option value="">Selecione uma loja</option>
+                <option value="">Selecione uma loja no menu</option>
                 {stores.map((store, index) => (
                     <option key={index} value={store.Codigodaloja}>
-                        {store.Loja} - {store.EndLoja}
+                        {store.Loja} - {store.EndLoja} -  {store.Marca}
                     </option>
                 ))}
             </select>

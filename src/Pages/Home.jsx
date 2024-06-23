@@ -5,13 +5,13 @@ import './Home.css';
 
 const Home = () => {
     return (
-        <div className="container elements">
-            <h1 className='Header'>Selecione a loja que voce fara a contagem</h1>
+        <container className="elements">
+            <h1 className='Header'>Indique a loja em que você fará a contagem.</h1>
             <form>
                 <StoreDropdown />
                 {/* Outros campos do formulário */}
         </form>
-        </div>
+        </container>
     );
 };
 
