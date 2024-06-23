@@ -1,15 +1,30 @@
-.elements{
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    margin-right: 1vw;
-    margin-left: 1vw;
-    margin-top: 40%;
 
-}
 
-.Header{
-    font-size: 21px;
+
+
+@media only screen and (max-width: 600px) {
+    body {
+        justify-content: center;
+        margin-top: 40%;
+        padding-left: 2vw;
+        padding-right: 2vw;
+        background-color: #ea0a40;
+      
+    }
+
    
-}
+
+    .elements{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+  
+    
+    }
+    .Header{
+        font-size: 2rem;
+        text-justify: inter-word;
+       
+    }
+  }

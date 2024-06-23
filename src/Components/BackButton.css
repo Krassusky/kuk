@@ -1,0 +1,12 @@
+
+@media only screen and (max-width: 600px) {
+.BackButton{
+
+    /* width: 30% !important; */
+    display: flex;
+    justify-content: flex-start;
+    position: absolute;
+    bottom: 3vh;
+}
+
+}
