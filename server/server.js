@@ -12,7 +12,9 @@ app.use(cors());
 
 // Directory where files will be saved
 //const saveDirectory = 'C:\\Users\\gusta\\OneDrive\\Área de Trabalho';
-const saveDirectory =  'C:\\Users\\gusta\\OneDrive\\Documents\\GitHub\\kuk\\server\\Data';
+// const saveDirectory =  'C:\\Users\\gusta\\OneDrive\\Documents\\GitHub\\kuk\\server\\Data';
+const saveDirectory =  'C:\\Users\\barro\\OneDrive\\Desktop\\Kuk\\kuk\\server\\Data';
+
 
 // Ensure the save directory exists
 if (!fs.existsSync(saveDirectory)) {
