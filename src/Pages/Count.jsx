@@ -1,10 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-import { DataContext } from '../hooks/DataContext'; // Importar o DataContext
+import { DataContext } from '../hooks/DataContext'; // Import DataContext
 import ProductDropdown from '../Components/ProductDropdown';
 import axios from 'axios';
 import BackButton from '../Components/BackButton';
-
 
 const Count = () => {
     const location = useLocation();
@@ -18,11 +17,14 @@ const Count = () => {
         Produto: '' // Campo Produto
     });
 
+    const [loading, setLoading] = useState(false); // Loading state
+
     const { stores } = useContext(DataContext); // Usar o contexto para obter as lojas
     const selectedStore = stores.find(store => store.Codigodaloja === storeId);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setLoading(true); // Set loading state to true
 
         console.log('Form submitted with:', formData); // Log dos dados do formulário
 
@@ -34,30 +36,15 @@ const Count = () => {
             Quantidade: formData.Qtd
         };
 
-        console.log('Sheet data:', sheetData); // Log dos dados a serem enviados ao Google Sheets
+        console.log('Sheet data:', sheetData); // Log dos dados a serem enviados ao servidor
 
         try {
-            const response = await axios.post(
-                // `https://sheets.googleapis.com/v4/spreadsheets/1C9bD1O_qwBgdKajrLApYkRcQqHI-qcel8TfvhwXkNuQ/values/Contagemestoque!A:E:append?valueInputOption=USER_ENTERED&key=${process.env.REACT_APP_GOOGLE_SHEETS_API_KEY}`,
-                'https://sheets.googleapis.com/v4/spreadsheets/1C9bD1O_qwBgdKajrLApYkRcQqHI-qcel8TfvhwXkNuQ/values/Contagemestoque!A:E:append',
-                {
-                    range: "Contagemestoque!A:E",
-                    majorDimension: "ROWS",
-                    values: [
-                        [
-                            sheetData.Codigodaloja,
-                            sheetData.Tipodevenda,
-                            sheetData.Produto,
-                            sheetData.Datadevalidade,
-                            sheetData.Quantidade
-                        ]
-                    ]
-                }
-            );
-
+            const response = await axios.post('http://localhost:5000/submit', sheetData);
             console.log('Data saved successfully:', response.data);
         } catch (error) {
             console.error('Error saving data:', error);
+        } finally {
+            setLoading(false); // Reset loading state to false
         }
     };
 
@@ -70,16 +57,14 @@ const Count = () => {
     };
 
     return (
-        <container className="elements">
+        <div className="elements">
             {selectedStore ? (
-               
-               <h3>
-               Loja Selecionada {selectedStore.Codigodaloja}-{selectedStore.Loja} <b>Endereco: {selectedStore.EndLoja}</b>
-               </h3>
+                <h3>
+                    Loja Selecionada {selectedStore.Codigodaloja}-{selectedStore.Loja} <b>Endereco: {selectedStore.EndLoja}</b>
+                </h3>
             ) : (
                 <p>Store ID: {storeId}</p>
-            )
-            }
+            )}
             <h4>Voce escolheu: <b>{selectedOption}</b></h4>
             <ProductDropdown
                 value={formData.Produto}
@@ -94,8 +79,7 @@ const Count = () => {
                         name="Date"
                         value={formData.Date}
                         onChange={handleInputChange}
-                        placeholder="ExampleDomain"
-                        required='true'
+                        required
                     />
                 </label>
                 <br />
@@ -106,16 +90,17 @@ const Count = () => {
                         name="Qtd"
                         value={formData.Qtd}
                         onChange={handleInputChange}
-                        required='true'
+                        required
                     />
                 </label>
                 <br />
-                <button type="submit">Submit</button>
+                <button type="submit" disabled={loading}>
+                    {loading ? 'Submitting...' : 'Submit'}
+                </button>
             </form>
             <BackButton className="B"/>
-        </container>
+        </div>
     );
 };
 
 export default Count;
-
