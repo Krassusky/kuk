@@ -5,6 +5,7 @@ import Options from '../Pages/Options';
 import StoreDropdown from '../Components/StoreDropdown';
 import Count from '../Pages/Count';
 
+
 export function RouteApp() {
   return (
     <Router basename="/">
