@@ -4,7 +4,6 @@ import React, { useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { DataContext } from '../hooks/DataContext';
 import ProductDropdown from '../Components/ProductDropdown';
-import Modal from '../Components/Modal';
 import axios from 'axios';
 import BackButton from '../Components/BackButton';
 
@@ -111,13 +110,6 @@ const Count = () => {
 
             <BackButton className="B" />
 
-            <Modal
-                show={modalShow}
-                title="Submission Status"
-                onClose={() => setModalShow(false)}
-            >
-                {modalMessage}
-            </Modal>
         </div>
     );
 };

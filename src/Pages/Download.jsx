@@ -1,5 +1,5 @@
 import React from 'react';
-import DownloadButton from './DownloadButton';
+import DownloadButton from '../Components/DownloadButton';
 
 const DownloadPage = () => { // Rename to avoid confusion with route path
   return (
