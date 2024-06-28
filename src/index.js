@@ -8,11 +8,12 @@ import { DataProvider }from './hooks/DataContext';
 
 ReactDOM.render(
     <React.StrictMode>
-        <DataProvider>
+        
         <AuthProvider>
+        <DataProvider>
             <App />
-        </AuthProvider>
         </DataProvider>
+        </AuthProvider>
     </React.StrictMode>,
     document.getElementById('root')
 );
