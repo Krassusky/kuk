@@ -1,10 +1,10 @@
 
-// src/Components/Count.js
+// src/Pages/Count.js
 import React, { useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { DataContext } from '../hooks/DataContext';
 import ProductDropdown from '../Components/ProductDropdown';
-import Modal from '../Components/Modal'; // Import the Modal component
+import Modal from '../Components/Modal';
 import axios from 'axios';
 import BackButton from '../Components/BackButton';
 
@@ -21,8 +21,8 @@ const Count = () => {
     });
 
     const [loading, setLoading] = useState(false);
-    const [modalShow, setModalShow] = useState(false); // State to control modal visibility
-    const [modalMessage, setModalMessage] = useState(''); // State for modal message
+    const [modalShow, setModalShow] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
 
     const { stores } = useContext(DataContext);
     const selectedStore = stores.find(store => store.Codigodaloja === storeId);
@@ -47,7 +47,6 @@ const Count = () => {
             const response = await axios.post('http://localhost:5000/submit', sheetData);
             console.log('Data saved successfully:', response.data);
 
-            // Set the modal message and show the modal
             setModalMessage('Data sent successfully!');
             setModalShow(true);
         } catch (error) {
@@ -112,7 +111,6 @@ const Count = () => {
 
             <BackButton className="B" />
 
-            {/* Modal Component */}
             <Modal
                 show={modalShow}
                 title="Submission Status"

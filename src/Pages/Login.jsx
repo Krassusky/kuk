@@ -1,3 +1,4 @@
+
 // src/screens/Home.js
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,12 +7,11 @@ import StoreDropdown from '../Components/StoreDropdown';
 import Login from '../Components/Login';
 
 
-const Home = () => {
+const Login = () => {
     return (
         <div className="elements">
-            <h1 className='Header'>Indique a loja em que você fará a contagem.</h1>
-            <form>
-                <StoreDropdown />
+             <form>
+            <Login />
                 
                 {/* Outros campos do formulário */}
             </form>
@@ -19,4 +19,3 @@ const Home = () => {
     );
 };
 
-export default Home;

@@ -1,23 +1,23 @@
+// src/Pages/Options.js
 import React, { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { DataContext } from '../hooks/DataContext'; // Importar o DataContext
+import { DataContext } from '../hooks/DataContext';
 import Button from 'react-bootstrap/Button';
 import './Options.css';
 import BackButton from '../Components/BackButton';
 
 const Options = () => {
     const { storeId } = useParams();
-    const { stores } = useContext(DataContext); // Usar o contexto para obter as lojas
+    const { stores } = useContext(DataContext);
 
-    // Encontrar a loja correspondente ao storeId
     const selectedStore = stores.find(store => store.Codigodaloja === storeId);
 
     const handleOptionSelect = (option) => {
-        console.log(`${option} selecionada`); // Log da opção selecionada
+        console.log(`${option} selecionada`);
     };
 
     return (
-        <container className="elements">
+        <div className="elements">
             {selectedStore ? (
                 <div>
                     <h3>
@@ -25,11 +25,10 @@ const Options = () => {
                     </h3>
                     <div className="optionsInformation">Escolha abaixo onde deseja fazer a contagem:  <b>Gôndola</b> ou <b>Câmara</b></div>
                     <div className='OptionsButtons'>
-                        {/* Usar Link para navegar para a página de contagem com parâmetros */}
-                        <Link to={`/Count?storeId=${storeId}&selectedOption=Câmara`}>
+                        <Link to={`/count?storeId=${storeId}&selectedOption=Câmara`}>
                             <Button  variant="light" onClick={() => handleOptionSelect('Câmara')}>Câmara</Button >
                         </Link>
-                        <Link to={`/Count?storeId=${storeId}&selectedOption=Gôndola`}>
+                        <Link to={`/count?storeId=${storeId}&selectedOption=Gôndola`}>
                             <Button  variant="light" onClick={() => handleOptionSelect('Gôndola')}>Gôndola</Button >
                         </Link>
                     </div>
@@ -40,7 +39,7 @@ const Options = () => {
                 </div>
             )}
             <BackButton className="B"/>
-        </container>
+        </div>
     );
 };
 
