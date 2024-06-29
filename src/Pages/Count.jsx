@@ -1,4 +1,3 @@
-
 // src/Pages/Count.js
 import React, { useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -6,6 +5,7 @@ import { DataContext } from '../hooks/DataContext';
 import ProductDropdown from '../Components/ProductDropdown';
 import axios from 'axios';
 import BackButton from '../Components/BackButton';
+import Modal from '../Components/Modal';
 
 const Count = () => {
     const location = useLocation();
@@ -65,6 +65,10 @@ const Count = () => {
         });
     };
 
+    const handleCloseModal = () => {
+        setModalShow(false);
+    };
+
     return (
         <div className="elements">
             {selectedStore ? (
@@ -110,6 +114,7 @@ const Count = () => {
 
             <BackButton className="B" />
 
+            <Modal show={modalShow} onClose={handleCloseModal} message={modalMessage} />
         </div>
     );
 };
