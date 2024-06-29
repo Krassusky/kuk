@@ -43,7 +43,7 @@ const Count = () => {
         console.log('Sheet data:', sheetData);
 
         try {
-            const response = await axios.post('http://localhost:5000/submit', sheetData);
+            const response = await axios.post('http://localhost:3001/submit', sheetData);
             console.log('Data saved successfully:', response.data);
 
             setModalMessage('Data sent successfully!');
