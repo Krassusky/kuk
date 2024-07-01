@@ -6,7 +6,7 @@ const { authenticate } = require('@google-cloud/local-auth');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001; // Use the PORT environment variable or default to 3001
 
 // Middleware
 app.use(bodyParser.json());
@@ -93,7 +93,3 @@ app.post('/submit', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-
-
-  
