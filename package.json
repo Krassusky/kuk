@@ -34,6 +34,7 @@
     "router-dom": "^2.2.11",
     "stripe": "^15.12.0",
     "tailwindcss": "^3.4.4",
+    "vercel": "^34.2.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
