@@ -8,16 +8,22 @@
     ],
     "routes": [
       {
-        "src": "/submit",
+        "src": "/api/submit",
         "dest": "/api/submit"
       },
       {
-        "src": "/download",
+        "src": "/api/download",
         "dest": "/api/download"
       },
       {
         "src": "/static/(.*)",
         "dest": "/static/$1"
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/"
       }
     ]
   }
