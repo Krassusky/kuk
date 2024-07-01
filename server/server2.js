@@ -69,12 +69,12 @@ async function appendData(auth, sheetData) {
 
 app.use('/static', express.static(path.join(__dirname, 'Data')));
 
-app.get('/download', (req, res) => {
+app.get('/api/download', (req, res) => {
   const file = path.join(__dirname, 'Data', 'data.json');
   res.download(file);
 });
 
-app.post('/submit', async (req, res) => {
+app.post('/api/submit', async (req, res) => {
   console.log('Received data:', req.body); // Log the received data for debugging
   const auth = await authorize();
   if (auth) {
@@ -88,8 +88,4 @@ app.post('/submit', async (req, res) => {
   } else {
     res.status(500).send('Failed to authenticate');
   }
-});
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
 });
