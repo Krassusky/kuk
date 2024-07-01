@@ -43,7 +43,7 @@ const Count = () => {
         console.log('Sheet data:', sheetData);
 
         try {
-            const response = await axios.post('https://kuk-chi.vercel.app/api/submit', sheetData);
+            const response = await axios.post('https://kuk-chi.vercel.app/submit', sheetData);
             console.log('Data saved successfully:', response.data);
 
             setModalMessage('Data sent successfully!');
