@@ -79,7 +79,7 @@ app.get('/api/download', (req, res) => {
   res.download(file);
 });
 
-app.get('/api/submit', async (req, res) => {
+app.post('/api/submit', async (req, res) => {
   console.log('Received data:', req.body); // Log the received data for debugging
  /* const auth = await authorize();
   if (auth) {

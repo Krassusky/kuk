@@ -9,7 +9,7 @@ import Login from '../Components/Login';
 const Home = () => {
     return (
         <div className="elements">
-            <h1 className='Header'>Indique a loja em que você fará a contagem. TESTE2 </h1>
+            <h1 className='Header'>Indique a loja em que você fará a contagem. </h1>
             <form>
                 <StoreDropdown />
                 

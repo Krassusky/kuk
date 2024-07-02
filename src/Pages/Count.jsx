@@ -43,7 +43,7 @@ const Count = () => {
         console.log('Sheet data:', sheetData);
 
         try {
-            const response = await axios.get('/submit', {
+            const response = await axios.post('/submit', JSON.stringify(sheetData), {
                 headers: { 'Content-Type': 'application/json' }
               });
             console.log('Data saved successfully:', response.data);
