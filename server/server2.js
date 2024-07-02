@@ -81,7 +81,7 @@ app.get('/api/download', (req, res) => {
 
 app.post('/api/submit', async (req, res) => {
   console.log('Received data:', req.body); // Log the received data for debugging
-  const auth = await authorize();
+ /* const auth = await authorize();
   if (auth) {
     try {
       await appendData(auth, req.body);
@@ -92,5 +92,6 @@ app.post('/api/submit', async (req, res) => {
     }
   } else {
     res.status(500).send('Failed to authenticate');
-  }
+  }*/
+ res.status(200).send("OK");
 });
