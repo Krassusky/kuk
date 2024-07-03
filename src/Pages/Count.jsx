@@ -75,7 +75,7 @@ const Count = () => {
         <div className="elements">
             {selectedStore ? (
                 <h3>
-                    Loja Selecionada {selectedStore.Codigodaloja}-{selectedStore.Loja} <b>Endereco: {selectedStore.EndLoja}</b>
+                    Loja Selecionada {selectedStore.Codigodaloja}-{selectedStore.Loja} <b>Endereço: {selectedStore.EndLoja}</b>
                 </h3>
             ) : (
                 <p>Store ID: {storeId}</p>
