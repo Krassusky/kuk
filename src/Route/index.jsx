@@ -8,6 +8,7 @@ import DownloadPage from '../Pages/Download';
 import Login from '../Pages/Login';
 import { AuthProvider } from '../context/AuthContext'; // Adjust the import path as necessary
 import ProtectedRoute from '../Components/ProtectedRoute'; // Adjust the import path as necessary
+import Add from '../Pages/Add';
 
 export function RouteApp() {
   return (
@@ -22,6 +23,7 @@ export function RouteApp() {
           <Route path="/options/:storeId" element={<ProtectedRoute element={Options} />} />
           <Route path="/count" element={<ProtectedRoute element={Count} />} />
           <Route path="/download" element={<ProtectedRoute element={DownloadPage} />} />
+          <Route path="/Add" element = {<Add/>} />
         </Routes>
       </Router>
     </AuthProvider>
